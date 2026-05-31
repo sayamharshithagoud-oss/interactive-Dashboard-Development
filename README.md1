@@ -1,0 +1,15 @@
+import pandas as pd
+import plotly.express as px
+
+# Load data
+df = pd.read_csv("sales_data.csv")
+
+# Sales by category
+fig = px.bar(
+    df.groupby('Category')['Sales'].sum().reset_index(),
+    x='Category',
+    y='Sales',
+    title='Sales by Category'
+)
+
+fig.show()
